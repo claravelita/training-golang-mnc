@@ -1,8 +1,11 @@
 package main
 
-import "github.com/claravelita/training-golang-mnc/assignment"
+import (
+	"github.com/claravelita/training-golang-mnc/assignment"
+)
 
 func main() {
 	// assignment.ConditionLoopingAssignment()
-	assignment.SliceLoopingAssignment()
+	// assignment.SliceLoopingAssignment()
+	assignment.ClosureStructAssignment()
 }
