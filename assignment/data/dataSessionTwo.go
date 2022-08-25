@@ -5,34 +5,64 @@ import "github.com/claravelita/training-golang-mnc/assignment/dtos"
 func PersonName() []*dtos.Person {
 	persons := []*dtos.Person{
 		{
-			Name: "Clara",
+			Name:           "Clara",
+			Address:        "Bekasi",
+			Job:            "Backend Developer",
+			TrainingReason: "Ingin lebih paham best practice pada golang",
 		},
 		{
-			Name: "Fiqri",
+			Name:           "Fiqri",
+			Address:        "Bandung",
+			Job:            "Backend Developer",
+			TrainingReason: "Training",
 		},
 		{
-			Name: "Medy",
+			Name:           "Medy",
+			Address:        "Jakarta",
+			Job:            "Backend Developer",
+			TrainingReason: "Training",
 		},
 		{
-			Name: "Ivan",
+			Name:           "Ivan",
+			Address:        "Tangerang",
+			Job:            "Backend Developer",
+			TrainingReason: "Training",
 		},
 		{
-			Name: "Rijal",
+			Name:           "Rijal",
+			Address:        "Pinrang",
+			Job:            "Backend Developer",
+			TrainingReason: "Training",
 		},
 		{
-			Name: "Adit",
+			Name:           "Adit",
+			Address:        "Jakarta",
+			Job:            "Backend Developer",
+			TrainingReason: "Training",
 		},
 		{
-			Name: "Luthfi",
+			Name:           "Luthfi",
+			Address:        "Tegal",
+			Job:            "Backend Developer",
+			TrainingReason: "Training",
 		},
 		{
-			Name: "Tantut",
+			Name:           "Tantut",
+			Address:        "Lampung",
+			Job:            "Backend Developer",
+			TrainingReason: "Training",
 		},
 		{
-			Name: "Ian",
+			Name:           "Ian",
+			Address:        "Lampung",
+			Job:            "Backend Developer",
+			TrainingReason: "Training",
 		},
 		{
-			Name: "Kemal",
+			Name:           "Kemal",
+			Address:        "Lampung",
+			Job:            "Backend Developer",
+			TrainingReason: "Training",
 		},
 	}
 	return persons

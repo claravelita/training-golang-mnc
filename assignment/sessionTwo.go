@@ -2,6 +2,8 @@ package assignment
 
 import (
 	"fmt"
+	"os"
+	"strconv"
 
 	"github.com/claravelita/training-golang-mnc/assignment/data"
 	"github.com/claravelita/training-golang-mnc/assignment/dtos"
@@ -17,4 +19,26 @@ func ClosureStructAssignment() {
 	}
 
 	printFriends(persons)
+}
+
+func CommandLineArgumentAssignment() {
+	param := os.Args[1]
+	paramInt, err := strconv.Atoi(param)
+	if err != nil {
+		fmt.Println("Error! parameter integer only")
+		return
+	}
+	persons := data.PersonName()
+	countPersons := len(persons)
+	if paramInt > countPersons || paramInt < 1 {
+		fmt.Println("Error! range parameter only", 1, "-", countPersons)
+		return
+	}
+
+	paramInt = paramInt - 1
+
+	fmt.Println("- Name:", persons[paramInt].Name)
+	fmt.Println("- Address:", persons[paramInt].Address)
+	fmt.Println("- Job:", persons[paramInt].Job)
+	fmt.Println("- Training Reason:", persons[paramInt].TrainingReason)
 }

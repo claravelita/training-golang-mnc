@@ -7,5 +7,7 @@ import (
 func main() {
 	// assignment.ConditionLoopingAssignment()
 	// assignment.SliceLoopingAssignment()
-	assignment.ClosureStructAssignment()
+	// assignment.ClosureStructAssignment()
+
+	assignment.CommandLineArgumentAssignment()
 }
