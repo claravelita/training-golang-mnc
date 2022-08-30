@@ -7,3 +7,7 @@ type Person struct {
 	Job            string
 	TrainingReason string
 }
+
+type User struct {
+	Name string
+}
