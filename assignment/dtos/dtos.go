@@ -9,5 +9,5 @@ type Person struct {
 }
 
 type User struct {
-	Name string
+	Name string `json:"name"`
 }

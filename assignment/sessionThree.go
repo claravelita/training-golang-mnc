@@ -2,7 +2,9 @@ package assignment
 
 import (
 	"fmt"
+	"sync"
 
+	"github.com/claravelita/training-golang-mnc/assignment/data"
 	"github.com/claravelita/training-golang-mnc/assignment/dtos"
 )
 
@@ -27,4 +29,47 @@ func (u *userService) Register(request *dtos.User) string {
 
 func (u *userService) GetUser() []*dtos.User {
 	return u.db
+}
+
+func InterfaceGetCreateAssigment() {
+	var user []*dtos.User
+	initUserService := NewServiceUser(user)
+	listPerson := data.PersonName()
+
+	for _, p := range listPerson {
+		res := initUserService.Register(&dtos.User{Name: p.Name})
+		fmt.Println(res)
+
+	}
+
+	resGet := initUserService.GetUser()
+	fmt.Println("\n-----------Hasil Get User-------------")
+	for _, v := range resGet {
+		fmt.Println(v.Name)
+	}
+}
+
+func InterfaceGetCreateWithGoRoutineAssigment() {
+	var user []*dtos.User
+	initUserService := NewServiceUser(user)
+	listPerson := data.PersonName()
+
+	var wg sync.WaitGroup
+	for _, p := range listPerson {
+		wg.Add(1)
+
+		go func(name string) {
+			res := initUserService.Register(&dtos.User{Name: name})
+			defer wg.Done()
+			fmt.Println(res)
+		}(p.Name)
+
+	}
+	wg.Wait()
+
+	resGet := initUserService.GetUser()
+	fmt.Println("\n-----------Hasil Get User-------------")
+	for _, v := range resGet {
+		fmt.Println(v.Name)
+	}
 }
