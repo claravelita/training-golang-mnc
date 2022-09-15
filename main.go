@@ -1,7 +1,5 @@
 package main
 
-import "github.com/claravelita/training-golang-mnc/assignment"
-
 func main() {
 	// assignment.ConditionLoopingAssignment()
 	// assignment.SliceLoopingAssignment()
@@ -9,5 +7,7 @@ func main() {
 	// assignment.CommandLineArgumentAssignment()
 	// assignment.InterfaceGetCreateAssigment()
 	// assignment.InterfaceGetCreateWithGoRoutineAssigment()
-	assignment.SimpleHTTPGetRegisterAssigment()
+	// assignment.InterfaceGetCreateWithGoRoutineAssigment()
+	practice.SessionSixMain()
+
 }
