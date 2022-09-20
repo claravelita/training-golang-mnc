@@ -1,6 +1,6 @@
 package main
 
-import "github.com/claravelita/training-golang-mnc/practice/session6"
+import "github.com/claravelita/training-golang-mnc/assignment"
 
 func main() {
 	// assignment.ConditionLoopingAssignment()
@@ -11,6 +11,8 @@ func main() {
 	// assignment.InterfaceGetCreateWithGoRoutineAssigment()
 	// assignment.InterfaceGetCreateWithGoRoutineAssigment()
 
-	session6.MainSessionSix()
+	// session6.MainSessionSix()
+
+	assignment.ChannelKorekApiBernyanyi()
 
 }
