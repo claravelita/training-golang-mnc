@@ -3,7 +3,7 @@ package helper
 import (
 	"net/http"
 
-	"github.com/claravelita/training-golang-mnc/assignment/dtos"
+	"github.com/claravelita/training-golang-mnc/dtos"
 )
 
 func BadRequestResponse() (response dtos.StandardResponse) {

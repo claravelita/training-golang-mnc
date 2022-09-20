@@ -10,7 +10,7 @@ import (
 
 var PORT = ":8080"
 
-func SessionSixMain() {
+func MainSessionSix() {
 	http.HandleFunc("/employees", getEmployees)
 	fmt.Println("Application is listening on port", PORT)
 	http.ListenAndServe(PORT, nil)
@@ -18,8 +18,9 @@ func SessionSixMain() {
 
 func getEmployees(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
+	var data = data.EmployeesData()
 	if r.Method == "GET" {
-		json.NewDecoder(w).Encode(data.EmployeesData)
+		json.NewEncoder(w).Encode(data)
 		return
 	}
 	http.Error(w, "Invalid Method", http.StatusBadRequest)

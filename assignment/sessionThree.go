@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/claravelita/training-golang-mnc/assignment/data"
-	"github.com/claravelita/training-golang-mnc/assignment/dtos"
+	"github.com/claravelita/training-golang-mnc/data"
+	"github.com/claravelita/training-golang-mnc/dtos"
 )
 
 // Assignment bikin interface Get and Create

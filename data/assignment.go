@@ -1,6 +1,6 @@
 package data
 
-import "github.com/claravelita/training-golang-mnc/assignment/dtos"
+import "github.com/claravelita/training-golang-mnc/dtos"
 
 func PersonName() []*dtos.Person {
 	persons := []*dtos.Person{

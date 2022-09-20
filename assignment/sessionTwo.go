@@ -5,8 +5,8 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/claravelita/training-golang-mnc/assignment/data"
-	"github.com/claravelita/training-golang-mnc/assignment/dtos"
+	"github.com/claravelita/training-golang-mnc/data"
+	"github.com/claravelita/training-golang-mnc/dtos"
 )
 
 // Closure + Pointer + Struct

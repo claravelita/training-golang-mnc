@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/claravelita/training-golang-mnc/assignment/dtos"
 	"github.com/claravelita/training-golang-mnc/assignment/helper"
+	"github.com/claravelita/training-golang-mnc/dtos"
 )
 
 // Simple HTTP Server for Get and Register
