@@ -26,6 +26,15 @@ func (c *orderController) Route(group *echo.Group) {
 	group.PUT("/orders/:id", c.Update)
 }
 
+// CreateOrder godoc
+// @Summary Create New Order
+// @Description This endpoint for create new order
+// @Tags Orders
+// @Accept  json
+// @Produce  json
+// @Param services body dtos.OrderRequest true "payload"
+// @Success 200 {object} dtos.JSONResponses
+// @Router /orders [post]
 func (c *orderController) Create(ctx echo.Context) error {
 	request := dtos.OrderRequest{}
 	err := command.ValidateRequest(ctx, &request)
@@ -40,6 +49,14 @@ func (c *orderController) Create(ctx echo.Context) error {
 	return ctx.JSON(responses.Code, responses)
 }
 
+// GetAllOrder godoc
+// @Summary Get All Order
+// @Description This endpoint for get all order
+// @Tags Orders
+// @Accept  json
+// @Produce  json
+// @Success 200 {object} dtos.JSONResponses
+// @Router /orders [get]
 func (c *orderController) GetAll(ctx echo.Context) error {
 	responses, err := c.usecase.FindAllOrder()
 	if err != nil {
@@ -48,6 +65,15 @@ func (c *orderController) GetAll(ctx echo.Context) error {
 	return ctx.JSON(responses.Code, responses)
 }
 
+// GetOrderById godoc
+// @Summary Get Order by ID
+// @Description This endpoint for get order by ID
+// @Tags Orders
+// @Accept  json
+// @Produce  json
+// @Success 200 {object} dtos.JSONResponses
+// @Param id path int true "Order ID"
+// @Router /orders/{id} [get]
 func (c *orderController) GetById(ctx echo.Context) error {
 	parameter := ctx.Param("id")
 	id, err := strconv.Atoi(parameter)
@@ -61,6 +87,15 @@ func (c *orderController) GetById(ctx echo.Context) error {
 	return ctx.JSON(responses.Code, responses)
 }
 
+// DeleteOrderById godoc
+// @Summary Delete Order by ID
+// @Description This endpoint for delete order by ID
+// @Tags Orders
+// @Accept  json
+// @Produce  json
+// @Success 200 {object} dtos.JSONResponses
+// @Param id path int true "Order ID"
+// @Router /orders/{id} [delete]
 func (c *orderController) Delete(ctx echo.Context) error {
 	parameter := ctx.Param("id")
 	id, err := strconv.Atoi(parameter)
@@ -74,6 +109,16 @@ func (c *orderController) Delete(ctx echo.Context) error {
 	return ctx.JSON(responses.Code, responses)
 }
 
+// UpdateOrderById godoc
+// @Summary Update Order by ID
+// @Description This endpoint for update order by ID
+// @Tags Orders
+// @Accept  json
+// @Produce  json
+// @Success 200 {object} dtos.JSONResponses
+// @Param services body dtos.OrderUpdateRequest true "payload"
+// @Param id path int true "Order ID"
+// @Router /orders/{id} [put]
 func (c *orderController) Update(ctx echo.Context) error {
 	parameter := ctx.Param("id")
 	id, err := strconv.Atoi(parameter)
@@ -81,7 +126,7 @@ func (c *orderController) Update(ctx echo.Context) error {
 		return ctx.JSON(http.StatusBadRequest, command.BadRequestResponses("parameter order_id should be integer"))
 	}
 
-	request := dtos.OrderRequest{}
+	request := dtos.OrderUpdateRequest{}
 	err = command.ValidateRequest(ctx, &request)
 	if err != nil {
 		return err

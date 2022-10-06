@@ -11,7 +11,9 @@ import (
 	"github.com/claravelita/training-golang-mnc/assignment/session8/infrastructure"
 	"github.com/claravelita/training-golang-mnc/assignment/session8/repository"
 	"github.com/claravelita/training-golang-mnc/assignment/session8/usecase"
+	_ "github.com/claravelita/training-golang-mnc/docs"
 	"github.com/labstack/echo/v4"
+	echoSwagger "github.com/swaggo/echo-swagger"
 )
 
 // Server Struct
@@ -32,7 +34,7 @@ func (server *Server) InitializeServer() {
 	handler.UseCustomValidatorHandler(server.Route)
 
 	initDB := infrastructure.NewGormDB()
-	apiGroup := server.Route.Group("/api")
+	apiGroup := server.Route.Group("")
 
 	orderRepo := repository.NewOrderRepository(initDB)
 	itemRepo := repository.NewItemRepository(initDB)
@@ -45,6 +47,6 @@ func (server *Server) InitializeServer() {
 		ReadTimeout:  20 * time.Minute,
 		WriteTimeout: 20 * time.Minute,
 	}
-
+	server.Route.GET("/swagger/*", echoSwagger.WrapHandler)
 	server.Route.Logger.Fatal(server.Route.StartServer(serverConfiguration))
 }

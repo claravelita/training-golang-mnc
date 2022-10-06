@@ -1,0 +1,190 @@
+basePath: /
+definitions:
+  dtos.ItemRequest:
+    properties:
+      description:
+        example: Iphone 10X
+        type: string
+      item_code:
+        example: "123"
+        type: string
+      quantity:
+        example: 1
+        type: integer
+    required:
+    - item_code
+    type: object
+  dtos.ItemUpdateRequest:
+    properties:
+      description:
+        example: Iphone 10X
+        type: string
+      item_code:
+        example: "123"
+        type: string
+      item_id:
+        example: 1
+        type: integer
+      quantity:
+        example: 10
+        type: integer
+    required:
+    - item_code
+    type: object
+  dtos.JSONResponses:
+    properties:
+      code:
+        type: integer
+      data: {}
+      errors: {}
+      status:
+        type: string
+    type: object
+  dtos.OrderRequest:
+    properties:
+      customer_name:
+        example: Tom Jerry
+        type: string
+      items:
+        items:
+          $ref: '#/definitions/dtos.ItemRequest'
+        type: array
+      ordered_at:
+        example: "2022-10-06T22:15:00+07:00"
+        type: string
+    required:
+    - customer_name
+    - ordered_at
+    type: object
+  dtos.OrderUpdateRequest:
+    properties:
+      customer_name:
+        example: Spyke Tyke
+        type: string
+      items:
+        items:
+          $ref: '#/definitions/dtos.ItemUpdateRequest'
+        type: array
+      ordered_at:
+        example: "2019-10-09T22:15:00+07:00"
+        type: string
+    required:
+    - customer_name
+    - ordered_at
+    type: object
+info:
+  contact:
+    email: claraavelitaa@gmail.com
+    name: Clara Velita Pranolo
+  description: This is swagger for training golang mnc service with Hacktiv8
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Training Golang MNC Service Api
+  version: "1.0"
+paths:
+  /orders:
+    get:
+      consumes:
+      - application/json
+      description: This endpoint for get all order
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dtos.JSONResponses'
+      summary: Get All Order
+      tags:
+      - Orders
+    post:
+      consumes:
+      - application/json
+      description: This endpoint for create new order
+      parameters:
+      - description: payload
+        in: body
+        name: services
+        required: true
+        schema:
+          $ref: '#/definitions/dtos.OrderRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dtos.JSONResponses'
+      summary: Create New Order
+      tags:
+      - Orders
+  /orders/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: This endpoint for delete order by ID
+      parameters:
+      - description: Order ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dtos.JSONResponses'
+      summary: Delete Order by ID
+      tags:
+      - Orders
+    get:
+      consumes:
+      - application/json
+      description: This endpoint for get order by ID
+      parameters:
+      - description: Order ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dtos.JSONResponses'
+      summary: Get Order by ID
+      tags:
+      - Orders
+    put:
+      consumes:
+      - application/json
+      description: This endpoint for update order by ID
+      parameters:
+      - description: payload
+        in: body
+        name: services
+        required: true
+        schema:
+          $ref: '#/definitions/dtos.OrderUpdateRequest'
+      - description: Order ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dtos.JSONResponses'
+      summary: Update Order by ID
+      tags:
+      - Orders
+swagger: "2.0"

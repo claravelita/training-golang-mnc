@@ -12,7 +12,7 @@ type OrderUsecase interface {
 	FindAllOrder() (dtos.JSONResponses, error)
 	FindOrderByID(id int) (dtos.JSONResponses, error)
 	DeleteOrderByID(id int) (dtos.JSONResponses, error)
-	UpdateOrderByID(id int, request dtos.OrderRequest) (dtos.JSONResponses, error)
+	UpdateOrderByID(id int, request dtos.OrderUpdateRequest) (dtos.JSONResponses, error)
 }
 
 type orderImplementation struct {
@@ -99,7 +99,7 @@ func (o orderImplementation) DeleteOrderByID(id int) (dtos.JSONResponses, error)
 	return command.SuccessResponses(nil), nil
 }
 
-func (o orderImplementation) UpdateOrderByID(id int, request dtos.OrderRequest) (dtos.JSONResponses, error) {
+func (o orderImplementation) UpdateOrderByID(id int, request dtos.OrderUpdateRequest) (dtos.JSONResponses, error) {
 	getOrder, err := o.repo.GetOrderById(id)
 	if getOrder == nil && err == nil {
 		return command.BadRequestResponses("order_id Not found"), err
@@ -136,10 +136,10 @@ func (o orderImplementation) UpdateOrderByID(id int, request dtos.OrderRequest) 
 		}
 	}
 
-	updateOrder, err := o.repo.UpdateOrder(id, requestOrder)
+	_, err = o.repo.UpdateOrder(id, requestOrder)
 	if err != nil {
 		return command.InternalServerResponses("Error to update order", err), err
 	}
 
-	return command.SuccessResponses(updateOrder), nil
+	return command.SuccessResponses(nil), nil
 }
