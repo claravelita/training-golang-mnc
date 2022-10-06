@@ -1,18 +1,16 @@
 package main
 
-import "github.com/claravelita/training-golang-mnc/assignment"
+import "github.com/claravelita/training-golang-mnc/assignment/session8"
 
 func main() {
-	// assignment.ConditionLoopingAssignment()
-	// assignment.SliceLoopingAssignment()
-	// assignment.ClosureStructAssignment()
-	// assignment.CommandLineArgumentAssignment()
-	// assignment.InterfaceGetCreateAssigment()
-	// assignment.InterfaceGetCreateWithGoRoutineAssigment()
-	// assignment.InterfaceGetCreateWithGoRoutineAssigment()
+	// session1.ConditionLoopingAssignment()
+	// session1.SliceLoopingAssignment()
+	// session2.ClosureStructAssignment()
+	// session2.CommandLineArgumentAssignment()
+	// session3.InterfaceGetCreateAssigment()
+	// session3.InterfaceGetCreateWithGoRoutineAssigment()
+	// session3.InterfaceGetCreateWithGoRoutineAssigment()
+	// session5.ChannelKorekApiBernyanyi()
 
-	// session6.MainSessionSix()
-
-	assignment.ChannelKorekApiBernyanyi()
-
+	session8.MainAssigmentSession8()
 }

@@ -1,4 +1,4 @@
-package assignment
+package session4
 
 import (
 	"encoding/json"
@@ -6,15 +6,16 @@ import (
 	"net/http"
 
 	"github.com/claravelita/training-golang-mnc/assignment/helper"
+	"github.com/claravelita/training-golang-mnc/assignment/session3"
 	"github.com/claravelita/training-golang-mnc/dtos"
 )
 
 // Simple HTTP Server for Get and Register
 type UserController struct {
-	userService ServiceUserInterface
+	userService session3.ServiceUserInterface
 }
 
-func NewUserController(services ServiceUserInterface) UserController {
+func NewUserController(services session3.ServiceUserInterface) UserController {
 	return UserController{
 		userService: services,
 	}
@@ -61,7 +62,7 @@ func greet(w http.ResponseWriter, r *http.Request) {
 func SimpleHTTPGetRegisterAssigment() {
 	var PORT = ":8080"
 	var db []*dtos.User
-	initServiceUser := NewServiceUser(db)
+	initServiceUser := session3.NewServiceUser(db)
 	initUserController := NewUserController(initServiceUser)
 	initUserController.UserRoute()
 	fmt.Println("Server Running on", PORT)

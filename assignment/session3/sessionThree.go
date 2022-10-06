@@ -1,4 +1,4 @@
-package assignment
+package session3
 
 import (
 	"fmt"
