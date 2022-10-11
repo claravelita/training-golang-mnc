@@ -43,7 +43,7 @@ func (server *Server) InitializeServer() {
 	orderController.Route(apiGroup)
 
 	serverConfiguration := &http.Server{
-		Addr:         ":" + os.Getenv("SERVER_PORT"),
+		Addr:         ":" + os.Getenv("PORT"),
 		ReadTimeout:  20 * time.Minute,
 		WriteTimeout: 20 * time.Minute,
 	}
