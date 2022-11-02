@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="refresh" content="15">
+    <style>
+    body{
+        font-family: arial, sans-serif;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+    }
+
+    .text-center{
+        text-align: center;
+    }
+
+    .bg-aman {
+        background-color: #BCE29E;
+    }
+
+    .bg-siaga {
+        background-color: #FDFDBD;
+    }
+
+    .bg-bahaya {
+        background-color: #EA9085;
+    }
+
+    th{
+        text-align: center;
+    }
+
+    .table-description{
+        width: 50px;;
+    }
+
+    .absolute {
+        position: absolute;
+        width: 20%;
+        bottom: 10px;
+    } 
+
+    .description{
+        color: grey;
+        font-size: 14px;
+    }
+    </style>
+</head>
+<body>
+{{$water := .Status.Water}}
+{{$wind := .Status.Wind}}
+
+<div class="text-center">
+<h2>Water Wind Status</h2>
+<p class="description"><i>Auto Reload Status every 15s</i></p>
+<div>
+
+<table style="margin-top: 50px;">
+  <tr>
+    <th>Water</th>
+    <th>Wind</th>
+  </tr>
+  <tr>
+    {{if le $water 5}}
+    <td class="bg-aman">{{$water}}m</td>
+    {{else if and (ge $water 6) (le $water 8)}}
+    <td class="bg-siaga">{{$water}}m</td>
+    {{else}}
+    <td class="bg-bahaya">{{$water}}m</td>
+    {{end}}
+
+    {{if le $wind 6}}
+    <td class="bg-aman">{{$wind}}<i>m/s</i></td>
+    {{else if and (ge $wind 7) (le $wind 15)}}
+    <td class="bg-siaga">{{$wind}}<i>m/s</i></td>
+    {{else}}
+    <td class="bg-bahaya">{{$wind}}<i>m/s</i></td>
+    {{end}}
+  </tr>
+</table>
+
+<table class="table-description absolute">
+    <tr>
+      <th>Status Description</th>
+    </tr>
+    <tr>
+      <td class="bg-aman">Aman</td>
+    </tr>
+    <tr>
+        <td class="bg-siaga">Siaga</td>
+      </tr>
+      <tr>
+        <td class="bg-bahaya">Bahaya</td>
+      </tr>
+  </table>
+
+</body>
+</html>
+
